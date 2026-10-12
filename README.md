@@ -29,6 +29,16 @@ WESE_EMPTY=1 npm run dev
 
 The first page asks for the school name and the first admin. After that, work down the getting-started list on Home: term, classes, fee categories, fee items, a fee structure, and a receipt book.
 
+## Docker
+
+The production desk listens on port 4000 inside the container. Compose publishes that only on the machine itself (`127.0.0.1:4000`), and nginx forwards the public name to it. The school books are the `kwese-data` volume, mounted at `/data`.
+
+```bash
+docker compose up -d --build
+```
+
+An empty office, with no sample pupils, is `WESE_EMPTY=1` on the `web` service.
+
 ## Tests
 
 ```bash
